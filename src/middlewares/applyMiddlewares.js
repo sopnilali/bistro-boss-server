@@ -1,7 +1,8 @@
-const { LOCAL_URL, CLIENT } = require("../config/config")
+
 const cors = require('cors');
 const express = require('express');
 const cookieParser = require('cookie-parser');
+const { LOCAL_URL, CLIENT } = require('../config/config');
 
 const applyMiddlewares = (app)=>{
     app.use(express.json());
