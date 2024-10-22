@@ -2,13 +2,16 @@ const mongoose = require('mongoose');
 require('dotenv').config()
 
 const getConnectionURL = ()=>{
+
     let connectionURL
-    if(process.env.NODE_ENV === 'production'){
-        connectionURL = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.35itrev.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
-    } else {
+
+    if(process.env.NODE_ENV === 'development'){
         connectionURL = process.env.DATABASE_LOCAL
     }
-    return connectionURL;
+    else{
+        connectionURL = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.35itrev.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;  
+    }
+    return connectionURL
 }
 
 const connectDB = ()=>{
