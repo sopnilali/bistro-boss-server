@@ -8,8 +8,8 @@ const applyMiddlewares = (app)=>{
     app.use(express.json());
     app.use(cors({
         origin: [ 
-            LOCAL_URL,
-            CLIENT
+            'https://bistro-boss-client-nu.vercel.app',
+            'http://localhost:5173'
         ],
         credentials: true
     }))
