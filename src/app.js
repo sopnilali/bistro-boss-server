@@ -1,11 +1,12 @@
 const express = require('express')
-const applyMiddlewares = require('./middlewares/applyMiddlewares')
-const connectDB = require('./db/connectDB')
-const globalRoutes = require('./routes/global')
-require('dotenv').config()
 const app = express()
+const connectDB = require('./db/connectDB')
+const applyMiddlewares = require('./middlewares/applyMiddlewares')
+const globalRoutes = require('./routes/global')
 const port = process.env.PORT || 3000
+require('dotenv').config()
 
+// routes configuration
 const menuRoutes = require('./routes/menu')
 const reviewRoutes = require('./routes/review')
 
