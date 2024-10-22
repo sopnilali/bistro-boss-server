@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 
 const applyMiddlewares = (app)=>{
     app.use(express.json());
+    
     app.use(cors({
         origin: [ 
             LOCAL_URL,
