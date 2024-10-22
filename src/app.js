@@ -1,24 +1,28 @@
 const express = require('express')
-const cors = require('cors')
-const { LOCAL_URL, CLIENT } = require('./config/config')
 const applyMiddlewares = require('./middlewares/applyMiddlewares')
 const connectDB = require('./db/connectDB')
+const globalRoutes = require('./routes/global')
 require('dotenv').config()
 const app = express()
 const port = process.env.PORT || 3000
-// Enable CORS for all routes
+
+const menuRoutes = require('./routes/menu')
+const reviewRoutes = require('./routes/review')
 
 // middleware routes start
 applyMiddlewares(app)
 // middleware routes end
 
 // all routes start
+app.use(menuRoutes)
+app.use(reviewRoutes)
 
-app.get('/', function (req, res) {
-    res.send('Welcome to bistro boss server!')
-})
 
-// all routes end
+
+// // // global routes start
+globalRoutes(app)
+// // global routes end
+
 
 const main = async()=> {
     await connectDB();
