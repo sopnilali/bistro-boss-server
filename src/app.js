@@ -4,11 +4,16 @@ const connectDB = require('./db/connectDB')
 const applyMiddlewares = require('./middlewares/applyMiddlewares')
 const globalRoutes = require('./routes/global')
 const port = process.env.PORT || 3000
+
+
+//dot environment config
 require('dotenv').config()
 
 // routes configuration
 const menuRoutes = require('./routes/menu')
 const reviewRoutes = require('./routes/review')
+const cartRoutes = require('./routes/carts')
+const userRoutes = require('./routes/users')
 
 
 // middleware routes start
@@ -18,19 +23,20 @@ applyMiddlewares(app)
 // all routes start
 app.use(menuRoutes)
 app.use(reviewRoutes)
-
-
+app.use(cartRoutes)
+app.use(userRoutes)
 
 // // // global routes start
 globalRoutes(app)
 // // global routes end
 
 
-const main = async()=> {
-    await connectDB();
+const main = ()=> {
+     connectDB();
     app.listen(port, function () {
         console.log(`web server listening on port ${port}`)
+
       })
 }
 
-main().catch(err=> console.log(err));
+main()
