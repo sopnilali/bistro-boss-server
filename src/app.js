@@ -14,6 +14,7 @@ const menuRoutes = require('./routes/menu')
 const reviewRoutes = require('./routes/review')
 const cartRoutes = require('./routes/carts')
 const userRoutes = require('./routes/users')
+const authenticationRoutes = require('./routes/authentication')
 
 
 // middleware routes start
@@ -25,14 +26,14 @@ app.use(menuRoutes)
 app.use(reviewRoutes)
 app.use(cartRoutes)
 app.use(userRoutes)
-
+app.use(authenticationRoutes)
 // // // global routes start
 globalRoutes(app)
 // // global routes end
 
 
-const main = ()=> {
-     connectDB();
+const main = async()=> {
+     await connectDB();
     app.listen(port, function () {
         console.log(`web server listening on port ${port}`)
 
