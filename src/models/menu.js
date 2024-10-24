@@ -19,7 +19,7 @@ const menuSchema = new Schema({
     },
     price: {
         type: Number
-    }
+    },
 })
 
 const menu = model('menu', menuSchema)

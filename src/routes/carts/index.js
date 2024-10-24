@@ -12,6 +12,7 @@ router.post('/api/cart', async (req, res) => {
         return res.send({ message: 'cart already exists', insertedId: null })
     }
     const result = await cart.create(cartItem)
+    console.log(result)
     res.send(result)
 })
 

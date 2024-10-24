@@ -8,7 +8,7 @@ router.post('/api/users', async (req, res) => {
     const query = {email : userData.email}
     const userExists = await user.findOne(query)
     if(userExists){
-        return res.status(400).send('User already exists')
+        return res.send({message: 'User already exists', insertedId: null})
     }
     const result = await user.create(userData)
     res.send(result)
@@ -17,6 +17,12 @@ router.post('/api/users', async (req, res) => {
 router.get('/api/users', async (req, res) => {
     const result = await user.find();
     res.send(result);
+})
+
+router.delete('/api/users', async (req, res) =>{
+    const query = {id: req.query._id}
+    const result = await user.deleteOne(query)
+    res.send(result)
 })
 
 module.exports = router
