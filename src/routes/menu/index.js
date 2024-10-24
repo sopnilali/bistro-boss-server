@@ -1,5 +1,6 @@
 const express = require('express');
 const menu = require('../../models/menu');
+const verifyTaken = require('../../middlewares/verifyToken');
 const router = express.Router()
 
 router.get('/api/menu', async(req, res)=> {
