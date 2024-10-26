@@ -1,5 +1,6 @@
 const express = require('express');
 const cart = require('../../models/cart');
+const verifyTaken = require('../../middlewares/verifyToken');
 
 const router = express.Router()
 
@@ -16,13 +17,13 @@ router.post('/api/cart', async (req, res) => {
     res.send(result)
 })
 
-router.delete('/api/cart', async (req, res) => {
+router.delete('/api/cart', verifyTaken, async (req, res) => {
     const query = {id: req.query._id}
     const result = await cart.deleteOne(query)
     res.send(result)
 })
 
-router.get('/api/cart', async (req, res) => {
+router.get('/api/cart', verifyTaken, async (req, res) => {
     const result = await cart.find({email: req.query.email})
     res.send(result)
 })
