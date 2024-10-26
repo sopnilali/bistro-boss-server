@@ -17,7 +17,7 @@ router.post('/api/cart', async (req, res) => {
 })
 
 router.delete('/api/cart', async (req, res) => {
-    const query = {id: req.query._id}
+    const query = {_id: req.query.id}
     const result = await cart.deleteOne(query)
     res.send(result)
 })
