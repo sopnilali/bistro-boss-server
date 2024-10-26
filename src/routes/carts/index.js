@@ -4,7 +4,7 @@ const verifyTaken = require('../../middlewares/verifyToken');
 
 const router = express.Router()
 
-router.post('/api/cart', async (req, res) => {
+router.post('/api/cart', verifyTaken,  async (req, res) => {
     const cartItem = req.body
     const query = {menuId: cartItem.menuId}
     const existMenuID = await cart.findOne(query)
@@ -13,7 +13,6 @@ router.post('/api/cart', async (req, res) => {
         return res.send({ message: 'cart already exists', insertedId: null })
     }
     const result = await cart.create(cartItem)
-    console.log(result)
     res.send(result)
 })
 
