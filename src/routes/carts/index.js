@@ -4,7 +4,7 @@ const verifyTaken = require('../../middlewares/verifyToken');
 
 const router = express.Router()
 
-router.post('/api/cart', verifyTaken,  async (req, res) => {
+router.post('/api/cart',  async (req, res) => {
     const cartItem = req.body
     const query = {menuId: cartItem.menuId}
     const existMenuID = await cart.findOne(query)
